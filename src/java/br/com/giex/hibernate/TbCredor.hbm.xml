@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/10/2012 10:35:04 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="br.com.giex.hibernate.TbCredor" table="TB_CREDOR" schema="INTER_CEDGIEXH">
+        <id name="idCredor" type="big_decimal">
+            <column name="ID_CREDOR" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="statusCredorN" type="boolean">
+            <column name="STATUS_CREDOR_N" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="obsCredorC" type="string">
+            <column name="OBS_CREDOR_C" length="400" />
+        </property>
+        <property name="nlsNumericCharacters" type="string">
+            <column name="NLS_NUMERIC_CHARACTERS" length="2">
+                <comment>Padr&#227;o de campo n&#250;merico (v$nls_parameters - NLS_NUMERIC_CHARACTERS)</comment>
+            </column>
+        </property>
+        <set name="tbCredorXmls" inverse="true">
+            <key>
+                <column name="ID_CREDOR" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="br.com.giex.hibernate.TbCredorXml" />
+        </set>
+        <set name="tbCredorLoteProcessamentos" inverse="true">
+            <key>
+                <column name="ID_CREDOR" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="br.com.giex.hibernate.TbCredorLoteProcessamento" />
+        </set>
+        <set name="tbCredorLogProcessamentos" inverse="true">
+            <key>
+                <column name="ID_CREDOR" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="br.com.giex.hibernate.TbCredorLogProcessamento" />
+        </set>
+    </class>
+</hibernate-mapping>

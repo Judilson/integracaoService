@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/10/2012 10:35:04 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="br.com.giex.hibernate.TbCredorXml" table="TB_CREDOR_XML" schema="INTER_CEDGIEXH">
+        <id name="idXml" type="big_decimal">
+            <column name="ID_XML" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbCredor" class="br.com.giex.hibernate.TbCredor" fetch="select">
+            <column name="ID_CREDOR" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="idOrdem" type="big_decimal">
+            <column name="ID_ORDEM" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="xmlC" type="clob">
+            <column name="XML_C" />
+        </property>
+        <property name="ativoN" type="java.lang.Boolean">
+            <column name="ATIVO_N" precision="1" scale="0">
+                <comment>1 PARA SIM 2 PARA N&#195;O</comment>
+            </column>
+        </property>
+        <set name="tbCredorLogProcessamentos" inverse="true">
+            <key>
+                <column name="ID_XML" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="br.com.giex.hibernate.TbCredorLogProcessamento" />
+        </set>
+    </class>
+</hibernate-mapping>

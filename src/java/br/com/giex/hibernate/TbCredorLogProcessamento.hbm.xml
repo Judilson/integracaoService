@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/10/2012 10:35:04 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="br.com.giex.hibernate.TbCredorLogProcessamento" table="TB_CREDOR_LOG_PROCESSAMENTO" schema="INTER_CEDGIEXH">
+        <id name="idLog" type="java.lang.Long">
+            <column name="ID_LOG" precision="22" scale="0" />
+            <generator class="sequence" >
+                <param name="sequence">SEQ_LOG_PROCESSAMENTO</param>
+            </generator>
+        </id>
+        <many-to-one name="tbCredor" class="br.com.giex.hibernate.TbCredor" fetch="select">
+            <column name="ID_CREDOR" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbCredorXml" class="br.com.giex.hibernate.TbCredorXml" fetch="select">
+            <column name="ID_XML" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbCredorLoteProcessamento" class="br.com.giex.hibernate.TbCredorLoteProcessamento" fetch="select">
+            <column name="ID_LOTE" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="dataInicioD" type="timestamp">
+            <column name="DATA_INICIO_D" length="19" not-null="true" />
+        </property>
+        <property name="dataFimD" type="timestamp">
+            <column name="DATA_FIM_D" length="19" />
+        </property>
+        <property name="logC" type="string">
+            <column name="LOG_C" length="4000" />
+        </property>
+        <property name="countN" type="big_decimal">
+            <column name="COUNT_N" precision="22" scale="0" />
+        </property>        
+    </class>
+</hibernate-mapping>

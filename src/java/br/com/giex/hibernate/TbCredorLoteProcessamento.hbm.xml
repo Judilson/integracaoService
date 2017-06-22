@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/10/2012 10:35:04 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="br.com.giex.hibernate.TbCredorLoteProcessamento" table="TB_CREDOR_LOTE_PROCESSAMENTO" schema="INTER_CEDGIEXH">
+        <id name="idLote" type="java.lang.Long">
+            <column name="ID_LOTE" precision="22" scale="0" />
+            <generator class="sequence" >
+                <param name="sequence">SEQ_LOTE_PROCESSAMENTO</param>
+            </generator>
+        </id>
+        <many-to-one name="tbCredor" class="br.com.giex.hibernate.TbCredor" fetch="select">
+            <column name="ID_CREDOR" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="dataInicioD" type="timestamp">
+            <column name="DATA_INICIO_D" length="19" not-null="true" />
+        </property>
+        <property name="dataFimD" type="timestamp">
+            <column name="DATA_FIM_D" length="19" />
+        </property>
+        <property name="logC" type="string">
+            <column name="LOG_C" length="4000" />
+        </property>
+        <set name="tbCredorLogProcessamentos" inverse="true">
+            <key>
+                <column name="ID_LOTE" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="br.com.giex.hibernate.TbCredorLogProcessamento" />
+        </set>
+    </class>
+</hibernate-mapping>

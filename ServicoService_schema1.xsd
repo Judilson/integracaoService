@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://etl.giex.com.br/" xmlns:tns="http://etl.giex.com.br/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="ChamaCredor" type="tns:ChamaCredor"/>
+
+  <xs:element name="ChamaCredorResponse" type="tns:ChamaCredorResponse"/>
+
+  <xs:complexType name="ChamaCredor">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ChamaCredorResponse">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+
